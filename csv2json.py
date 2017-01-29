@@ -16,11 +16,6 @@ csv_file.close() #this is important for clearing up memory
 header_row =csv_rows[0]
 value_rows = csv_rows[1:]
 
-# /////// ACCESS THE STRUCTURE OF THE FILE ///////
-
-
-# ////// MANIPULATE THAT FILE /////////
-
 
 # /////// WRITE OUT A NEW FILE /////////
 
@@ -33,19 +28,6 @@ import json
 from pprint import pprint
 
 
-#STUDY BELOW PART**********************
-data = [] #initialize list as an empty set which is what [] is for
-for value_row in value_rows:
-	list_value = {} #empty set but for values
-	# value_row = ['1', 'dennis', 'Qian', '26', '1/1/17']
-	for index, column_value in enumerate(value_row):
-		key = header_row[index]
-		list_value[key] = column_value
-	data.append(list_value)
-
-	#the logic is the computer writes from left to right, then top to bottom
-
-
 #read in the file i WANT
 
 data = json.load(csv_file)
@@ -56,5 +38,4 @@ pprint(data) #previewing the data
 
 outfile = open("Jsonresult.json","w+")  #name of file being created
 json.dump(data, outfile, sort_keys=True, indent=4, separators=(',', ': '))
-#sort_keys=True, indent=4, separators=(',', ': ')) makes it pretty and not outut into a single line
 
